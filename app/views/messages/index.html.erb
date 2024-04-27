@@ -1,4 +1,4 @@
 <% @messages.each do |message| %>
-  <h1><%= message.title %></h1>
+  <h1><%= link_to message.title, message_path(message) %></h1>
   <p><%= message.description %></p>
 <% end %>

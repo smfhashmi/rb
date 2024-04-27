@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
 
   private
 
-  def get_message(id)
+  def get_message
     @message = Message.find(params[:id])
     return @message
   end
