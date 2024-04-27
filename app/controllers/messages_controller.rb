@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :get_message, only: [:show, :edit, :update, :destroy]
   def index
     @messages = Message.all
   end
@@ -17,17 +18,13 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = get_message(params[:id])
-    return @message
   end
 
   def edit
-    @message = get_message(params[:id])
     render :edit
   end
 
   def update
-    @message = get_message(params[:id])
     if @message.update(message_params)
       redirect_to messages_path
     else
@@ -36,7 +33,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = get_message(params[:id])
     @message.destroy
     redirect_to messages_path
   end
@@ -44,7 +40,8 @@ class MessagesController < ApplicationController
   private
 
   def get_message(id)
-    return Message.find(params[:id])
+    @message = Message.find(params[:id])
+    return @message
   end
 
   def message_params

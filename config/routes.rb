@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :todos
   get 'pages/home'
   get 'pages/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :posts
+  resources :messages
 
   # Defines the root path route ("/")
   root "posts#index"
