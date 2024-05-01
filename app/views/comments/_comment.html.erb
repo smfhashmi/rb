@@ -5,8 +5,7 @@
   </p>
   <span><%= comment.created_at%></span>
   <p class="link">
-    <%= link_to "show", comment%>
-    <%= link_to "edit", edit_comment_path(comment)%>
+    <%= button_to "edit", edit_comment_path(comment), method: :post%>
     <%= button_to "delete", comment_path(comment), method: :delete%>
   </p>
 </div>
