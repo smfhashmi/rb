@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Comments</h1>
+<h1>
+  Comments
+  <span id='comment_counter'><%= Comment.count%></span>
+</h1>
 <div id='new_comment'>
   <%= render partial: 'comments/form', comment: Comment.new%>
 </div>

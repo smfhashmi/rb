@@ -34,7 +34,8 @@ class CommentsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update('new_comment', partial: 'comments/form', locals: {comment: Comment.new}),
-            turbo_stream.append('comments', partial: 'comments/comment', locals: {comment: @comment})
+            turbo_stream.append('comments', partial: 'comments/comment', locals: {comment: @comment}),
+            turbo_stream.update('comment_counter', html: "#{Comment.count}")
           ]
         end
         #format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
@@ -74,8 +75,11 @@ class CommentsController < ApplicationController
     @comment.destroy!
 
     respond_to do |format|
-      format.turbo_stream do 
-        render turbo_stream: turbo_stream.remove(@comment)
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.remove(@comment),
+          turbo_stream.update('comment_counter', html: "#{Comment.count}")
+        ]
       end
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
