@@ -7,6 +7,6 @@
   <p class="link">
     <%= link_to "show", comment%>
     <%= link_to "edit", edit_comment_path(comment)%>
-    <%= link_to "delete", comment_path(comment), method: :delete%>
+    <%= button_to "delete", comment_path(comment), method: :delete%>
   </p>
 </div>
