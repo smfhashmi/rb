@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :todos
   get 'pages/home'
   get 'pages/about'
