@@ -1,19 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Comments</h1>
-
 <div id='new_comment'>
   <%= render partial: 'comments/form', comment: @comment %>
 </div>
 
-
 <div id="comments">
-  <% @comments.each do |comment| %>
-    <%= render comment %>
-    <p>
-      <%= link_to "Show this comment", comment %>
-    </p>
-  <% end %>
+   <%= render @comments %>
 </div>
 
 <%= link_to "New comment", new_comment_path %>

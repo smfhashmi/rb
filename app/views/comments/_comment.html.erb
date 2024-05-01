@@ -3,10 +3,10 @@
     <strong>Title:</strong>
     <%= comment.title %>
   </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= comment.body %>
+  <span><%= comment.created_at%></span>
+  <p class="link">
+    <%= link_to "show", comment%>
+    <%= link_to "edit", edit_comment_path(comment)%>
+    <%= link_to "delete", comment_path(comment), method: :delete%>
   </p>
-
 </div>
