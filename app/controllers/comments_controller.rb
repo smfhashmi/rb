@@ -35,7 +35,8 @@ class CommentsController < ApplicationController
           render turbo_stream: [
             turbo_stream.update('new_comment', partial: 'comments/form', locals: {comment: Comment.new}),
             turbo_stream.append('comments', partial: 'comments/comment', locals: {comment: @comment}),
-            turbo_stream.update('comment_counter', html: "#{Comment.count}")
+            turbo_stream.update('comment_counter', html: "#{Comment.count}"),
+            turbo_stream.update('notice', 'message created')
           ]
         end
         #format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
